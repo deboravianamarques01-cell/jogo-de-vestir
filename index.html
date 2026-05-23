@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👗 Jogo de Vestir Neurodivergente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👗 Jogo de Vestir</h1>
+            <p class="subtitle">Crie looks incríveis!</p>
+        </header>
+
+        <main>
+            <section class="game-area">
+                <!-- Personagem e Roupas -->
+                <div class="character-display">
+                    <div class="character">
+                        <div class="head"></div>
+                        <div class="body">
+                            <div class="top" id="topDisplay"></div>
+                            <div class="bottom" id="bottomDisplay"></div>
+                            <div class="feet" id="feetDisplay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seleção de Roupas -->
+                <div class="clothes-selector">
+                    <!-- TOPS -->
+                    <div class="clothing-category">
+                        <h2>👚 Tops</h2>
+                        <div class="options">
+                            <button class="cloth-btn" data-type="top" data-value="camiseta" style="background-color: #FF6B6B;">
+                                Camiseta Vermelha
+                            </button>
+                            <button class="cloth-btn" data-type="top" data-value="blusa" style="background-color: #4ECDC4;">
+                                Blusa Azul
+                            </button>
+                            <button class="cloth-btn" data-type="top" data-value="vestido" style="background-color: #FFE66D;">
+                                Vestido Amarelo
+                            </button>
+                            <button class="cloth-btn" data-type="top" data-value="jaqueta" style="background-color: #95E1D3;">
+                                Jaqueta Verde
+                            </button>
+                            <button class="cloth-btn" data-type="top" data-value="sueter" style="background-color: #F38181;">
+                                Suéter Rosa
+                            </button>
+                            <button class="cloth-btn" data-type="top" data-value="regata" style="background-color: #AA96DA;">
+                                Regata Roxa
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CALÇAS/SAIAS -->
+                    <div class="clothing-category">
+                        <h2>👖 Calças & Saias</h2>
+                        <div class="options">
+                            <button class="cloth-btn" data-type="bottom" data-value="saia" style="background-color: #FF6B6B;">
+                                Saia Vermelha
+                            </button>
+                            <button class="cloth-btn" data-type="bottom" data-value="calca-jeans" style="background-color: #4A7C8C;">
+                                Calça Jeans
+                            </button>
+                            <button class="cloth-btn" data-type="bottom" data-value="short" style="background-color: #FFE66D;">
+                                Short Amarelo
+                            </button>
+                            <button class="cloth-btn" data-type="bottom" data-value="legging" style="background-color: #000000; color: white;">
+                                Legging Preta
+                            </button>
+                            <button class="cloth-btn" data-type="bottom" data-value="calca-rosa" style="background-color: #FFB6D9;">
+                                Calça Rosa
+                            </button>
+                            <button class="cloth-btn" data-type="bottom" data-value="calca-verde" style="background-color: #95E1D3;">
+                                Calça Verde
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CALÇADOS -->
+                    <div class="clothing-category">
+                        <h2>👟 Calçados</h2>
+                        <div class="options">
+                            <button class="cloth-btn" data-type="feet" data-value="tenis" style="background-color: #FF6B6B;">
+                                Tênis Vermelho
+                            </button>
+                            <button class="cloth-btn" data-type="feet" data-value="sandalia" style="background-color: #FFE66D;">
+                                Sandália Dourada
+                            </button>
+                            <button class="cloth-btn" data-type="feet" data-value="bota" style="background-color: #4A7C8C;">
+                                Bota Azul
+                            </button>
+                            <button class="cloth-btn" data-type="feet" data-value="sapato" style="background-color: #000000; color: white;">
+                                Sapato Preto
+                            </button>
+                            <button class="cloth-btn" data-type="feet" data-value="rasteira" style="background-color: #95E1D3;">
+                                Rasteira Verde
+                            </button>
+                            <button class="cloth-btn" data-type="feet" data-value="scarpin" style="background-color: #F38181;">
+                                Scarpin Rosa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botão para Limpar -->
+            <div class="actions">
+                <button id="clearBtn" class="clear-btn">🔄 Limpar Tudo</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>✨ Jogo de vestir acessível e inclusivo ✨</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
