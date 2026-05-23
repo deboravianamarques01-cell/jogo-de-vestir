@@ -1,0 +1,453 @@
+/* ============================================
+   RESET E VARIÁVEIS GLOBAIS
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #FF6B6B;
+    --accent-color: #4ECDC4;
+    --background: #f8f9fa;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-color: #e0e0e0;
+    --success-color: #2ecc71;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #1a1a1a;
+        --text-dark: #f5f5f5;
+        --text-light: #b0b0b0;
+        --border-color: #333;
+    }
+}
+
+/* Redução de movimento para usuários sensíveis */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   ESTILOS GERAIS
+   ============================================ */
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+/* ============================================
+   CONTAINER E LAYOUT
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   ÁREA DO JOGO
+   ============================================ */
+
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Exibição do Personagem */
+.character-display {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+@media (prefers-color-scheme: dark) {
+    .character-display {
+        background: #2a2a2a;
+    }
+}
+
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.head {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #FDBCB4 0%, #F5A89B 100%);
+    border-radius: 50%;
+    border: 3px solid var(--text-dark);
+    box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.head::before {
+    content: '😊';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+.body {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.top,
+.bottom,
+.feet {
+    width: 100%;
+    min-height: 60px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #f0f0f0;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+@media (prefers-color-scheme: dark) {
+    .top,
+    .bottom,
+    .feet {
+        background-color: #333;
+    }
+}
+
+.top.selected,
+.bottom.selected,
+.feet.selected {
+    border-style: solid;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
+}
+
+/* ============================================
+   SELETOR DE ROUPAS
+   ============================================ */
+
+.clothes-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.clothing-category {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+@media (prefers-color-scheme: dark) {
+    .clothing-category {
+        background: #2a2a2a;
+    }
+}
+
+.clothing-category h2 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+}
+
+/* Botões de Roupa */
+.cloth-btn {
+    padding: 15px 12px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 50px;
+    flex-wrap: wrap;
+}
+
+.cloth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cloth-btn:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.cloth-btn.selected {
+    border: 3px solid #333;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3), inset 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* ============================================
+   AÇÕES
+   ============================================ */
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.clear-btn {
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.clear-btn:hover {
+    background-color: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 107, 107, 0.3);
+}
+
+.clear-btn:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.clear-btn:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .game-area {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .options {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .cloth-btn {
+        min-height: 45px;
+        font-size: 0.8rem;
+        padding: 12px 10px;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .game-area {
+        gap: 15px;
+    }
+
+    .clothing-category {
+        padding: 15px;
+    }
+
+    .clothing-category h2 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .options {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 8px;
+    }
+
+    .cloth-btn {
+        min-height: 40px;
+        font-size: 0.75rem;
+        padding: 8px;
+    }
+
+    .clear-btn {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+
+    .head {
+        width: 60px;
+        height: 60px;
+    }
+
+    .head::before {
+        font-size: 1.5rem;
+    }
+
+    .body {
+        width: 100px;
+    }
+
+    .top,
+    .bottom,
+    .feet {
+        min-height: 50px;
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================
+   ACESSIBILIDADE
+   ============================================ */
+
+/* Alto contraste */
+@media (prefers-contrast: more) {
+    .cloth-btn {
+        border-width: 3px;
+    }
+
+    .cloth-btn:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Modo de alto contraste - botões com borda forte */
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+    .cloth-btn {
+        border: 3px solid white;
+    }
+}
+
+/* Usuários que precisam de texto maior */
+@media (prefers-color-scheme: light) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   IMPRESSÃO (PRINT)
+   ============================================ */
+
+@media print {
+    .actions,
+    footer {
+        display: none;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
